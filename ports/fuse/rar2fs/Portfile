@@ -1,0 +1,43 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        hasse69 rar2fs 1.27.2 v
+
+name                rar2fs
+conflicts           rar2fs-devel
+version             1.27.2
+revision            0
+categories          fuse
+platforms           darwin
+license             GPLv3
+
+maintainers         nomaintainer
+
+description         rar2fs: FUSE file system for reading RAR archives
+long_description    ${description}
+
+homepage            https://hasse69.github.io/rar2fs/
+
+checksums           rmd160  f4a4080d9733d6c14043f0159319300b7f78a3ab \
+                    sha256  58ed911108d5eb93cbe256162ef8d5ce502a7cf29101adea2a32d4dcf1e1e7ff \
+                    size    132922
+
+universal_variant   no
+
+depends_build-append     port:pkgconfig
+depends_lib-append       port:osxfuse \
+                         port:libunrar
+
+use_autoreconf           yes
+autoreconf.args         -f -i -v
+
+build.env-append         USER_CFLAGS="${configure.cflags}"
+
+#configure.compiler      macports-gcc-8
+
+configure.args-append    --with-fuse=${prefix}/include/osxfuse \
+                         --with-unrar=${prefix}/include/unrar \
+                         --disable-static-unrar \
+                         --disable-debug

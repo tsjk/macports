@@ -1,0 +1,33 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        lavoiesl osx-cpu-temp af036f71876e4670a1a7a731d556fa6f96767b13
+categories          sysutils
+platforms           darwin
+maintainers         nomaintainer
+license             GPLv2
+
+description         Outputs current CPU temperature for OSX
+
+long_description    ${description}
+
+checksums           rmd160  3550ce7645c7a6c4a81a457d245f9c4b0456139a \
+                    sha256  c6e68bc2180e3d68bffa2b3402b20f149d8e60627f0bca8dbf84c4ada9264e2d \
+                    size    12601
+
+pre-build {
+    reinplace "s|^PREFIX = .*|PREFIX = ${prefix}|" ${worksrcpath}/Makefile
+    reinplace "s|\$(PREFIX)|\$(DESTDIR)\$(PREFIX)|" ${worksrcpath}/Makefile
+}
+
+use_configure        no
+
+build.target-delete  all
+
+post-destroot {
+    xinstall -d -m 0755 ${destroot}${prefix}/share/${name}
+    xinstall -m 0644 -W ${worksrcpath} README.md LICENSE \
+        ${destroot}${prefix}/share/${name}/
+}

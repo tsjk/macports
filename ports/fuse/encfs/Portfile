@@ -1,0 +1,37 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           cmake 1.1
+PortGroup           cxx11 1.0
+
+github.setup        vgough encfs 1.9.5 v
+
+name                encfs
+conflicts           encfs-devel
+version             1.9.5
+revision            0
+categories          fuse
+platforms           darwin
+license             {LGPL+GPL}
+
+maintainers         nomaintainer
+
+description         EncFS: an Encrypted Filesystem for FUSE.
+long_description    ${description}
+
+homepage            http://vgough.github.io/encfs/
+
+checksums           rmd160  ea92ebe914d82469c69f3d94dfef7a9e06eef48a \
+                    sha256  e60c39a2feb8be3a50e08f2c42f225f07004ef94993df443b0ffeb84f3455f7e \
+                    size    2799404
+
+universal_variant   no
+
+depends_build-append     port:pkgconfig
+depends_lib-append       path:lib/libssl.dylib:openssl \
+                         port:boost \
+                         port:gettext \
+                         port:osxfuse
+
+cmake.out_of_source      yes

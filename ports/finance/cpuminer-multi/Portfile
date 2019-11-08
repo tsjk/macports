@@ -1,0 +1,44 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        tpruvot cpuminer-multi 04666ea6d0d7e00e4d520640aac29db5bcd65353
+
+name                cpuminer-multi
+categories          finance
+maintainers         nomaintainer
+platforms           darwin
+license             GPL-2
+
+description         crypto cpuminer (linux + windows) https://bitcointalk.org/?topic=841401
+long_description    ${description}
+
+checksums           rmd160  220914a4c924bf42f450589d00605805397ec923 \
+                    sha256  0fe86631408b4dc3ca58d216dc604a52e473077599a0c4f45f508fc5b4cf61bf \
+                    size    16548697
+
+depends_lib-append  port:automake \
+                    port:curl \
+                    port:jansson \
+                    port:libidn \
+                    path:lib/libssl.dylib:openssl \
+                    port:zlib
+
+use_autoreconf      yes
+
+configure.args      --with-crypto=${prefix} --with-curl
+
+configure.cflags-append     -O3 -mtune=native
+configure.cxxflags-append   -O3 -mtune=native
+
+pre-configure {
+    system -W ${worksrcpath} "chmod +x ./autogen.sh"
+    system -W ${worksrcpath} "chmod +x ./nomacro.pl"
+    system -W ${worksrcpath} "./autogen.sh"
+    system -W ${worksrcpath} "./nomacro.pl"
+}
+
+post-configure {
+    system -W ${worksrcpath} "perl -p -i -e 's/#if \(WINDOWS\)/#define ASM 0\n#if (WINDOWS)/g' ./algo/neoscrypt.c"
+}
