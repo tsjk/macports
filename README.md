@@ -1,0 +1,2 @@
+# macports
+/usr/local/macports
