@@ -3,11 +3,11 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        hasse69 rar2fs 1.27.2 v
+github.setup        hasse69 rar2fs 1.28.0 v
 
 name                rar2fs
 conflicts           rar2fs-devel
-version             1.27.2
+version             1.28.0
 revision            0
 categories          fuse
 platforms           darwin
@@ -20,9 +20,9 @@ long_description    ${description}
 
 homepage            https://hasse69.github.io/rar2fs/
 
-checksums           rmd160  f4a4080d9733d6c14043f0159319300b7f78a3ab \
-                    sha256  58ed911108d5eb93cbe256162ef8d5ce502a7cf29101adea2a32d4dcf1e1e7ff \
-                    size    132922
+checksums           rmd160  bcaf26f2a23bbd020063233cc10ccb9dbff9c23f \
+                    sha256  33f269b737e760770fc02a2ed6e05448b84f66c43e49a6590cdc63e7582058d6 \
+                    size    120689
 
 universal_variant   no
 
