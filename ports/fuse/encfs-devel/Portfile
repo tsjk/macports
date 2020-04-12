@@ -5,12 +5,12 @@ PortGroup           github 1.0
 PortGroup           cmake 1.1
 PortGroup           cxx11 1.0
 
-#github.setup        vgough encfs 24af76d0d9503e1bd0725f6b448c8fecb603ab56
-github.setup        benrubson encfs 7fc3730f67888106ade57a66d3da10a9f825d199
+github.setup        vgough encfs 3d4ef0049368a3d0cd0c5a1f10ca331bb52aaef6
+#github.setup        benrubson encfs 7fc3730f67888106ade57a66d3da10a9f825d199
 
 name                encfs-devel
 conflicts           encfs
-version             20180427
+version             20200317
 revision            0
 categories          fuse
 platforms           darwin
@@ -23,9 +23,9 @@ long_description    ${description}
 
 homepage            http://vgough.github.io/encfs/
 
-checksums           rmd160  a1f414dd9317e412a862a7a09ee35dfd2c6a2fe1 \
-                    sha256  46448111fd39a1713a95801ff262acd2f22c7bc67254665f554839144e432928 \
-                    size    2799623
+checksums           rmd160  01c97b2f2d99d8a3fb2525100ea02a1931e1d62e \
+                    sha256  6a2754f09751c832b2f99ebb38b5dca4789d2f89dd7aea87fa03ecf0836877b4 \
+                    size    2686032
 
 universal_variant   no
 

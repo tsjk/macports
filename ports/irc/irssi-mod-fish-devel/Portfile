@@ -4,8 +4,8 @@ PortSystem          1.0
 PortGroup           cmake 1.1
 PortGroup           github 1.0
 
-github.setup        falsovsky FiSH-irssi 1171606ef327246b7f1659c993811abe91d27871
-version             2019-05-28
+github.setup        falsovsky FiSH-irssi 330e19a274c50b41896c510d6aebfa1f4caa1894
+version             2020-04-02
 categories          net chat devel
 platforms           darwin
 license             MIT
@@ -15,9 +15,9 @@ long_description    FiSH is an encryption add-on module for irssi. \
                     Uses the Blowfish cipher to encrypt private and public messages in ECB or CBC modes, using a specified key. \
                     It also includes a secure Diffie-Hellman key exchange for private chat.
 
-checksums           rmd160  886c846e1689bc2af7f0e727ad529cd49e2eef4c \
-                    sha256  4dcb79aa56dfac2e45176e0176b0c347ef262541e132660985dc99a601d1c009 \
-                    size    21883
+checksums           rmd160  0bece9a3e1e36e7f5c7434dbcf464b32ac510f1c \
+                    sha256  d51b847f99b7109aecfd86850a3437caabcb72aa59734312e2eee4fe8d387366 \
+                    size    21938
 
 depends_build-append    port:pkgconfig \
                         port:glib2 \
