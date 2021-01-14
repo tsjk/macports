@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        hasse69 rar2fs 1.29.0 v
+github.setup        hasse69 rar2fs 1.29.3 v
 
 name                rar2fs
 conflicts           rar2fs-devel
@@ -20,11 +20,12 @@ long_description    ${description}
 
 homepage            https://hasse69.github.io/rar2fs/
 
-checksums           rmd160  85fdee9d2b4066533579f660fa844bb893fe7537 \
-                    sha256  29feb791f0783e1e7d106618e0a59f2798d81dd1869b8e0918839db21719ecc1 \
-                    size    124678
+checksums           rmd160  ddefda3e64dc5353ed5dfbe28c7a2eb73e900c35 \
+                    sha256  10249682c35b25d7364708aa368a5685591e2641b184c7105abd64904f3e80cc \
+                    size    125304
 
 universal_variant   no
+
 
 depends_build-append     port:pkgconfig
 depends_lib-append       port:osxfuse \

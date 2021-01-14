@@ -4,8 +4,8 @@ PortSystem          1.0
 PortGroup           cmake 1.1
 PortGroup           github 1.0
 
-github.setup        falsovsky FiSH-irssi 330e19a274c50b41896c510d6aebfa1f4caa1894
-version             2020-04-02
+github.setup        falsovsky FiSH-irssi 5295563acd6f1c679473c4f4820281402db76682
+version             2020-07-29
 categories          net chat devel
 platforms           darwin
 license             MIT

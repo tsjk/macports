@@ -88,6 +88,7 @@ post-destroot {
 variant uploadscript description "Configures ${name} to support post processing of uploaded files" {
     configure.args-append --with-uploadscript
 }
+
 variant mysql5 \
     conflicts mysql51 mysql55 mysql56 mysql57 mariadb percona \
     description "Enable MySQL 5.1 support" {
@@ -183,6 +184,14 @@ variant tls \
 
     depends_lib-append      path:lib/libssl.dylib:openssl
     configure.args-append   --with-tls \
+                            --with-certfile=${prefix}/etc/${name}/ssl/pure-ftpd.pem
+}
+
+variant implicit_tls \
+    description "Implicit encryption of ftp control and data channels using SSL/TLS" {
+
+    depends_lib-append      path:lib/libssl.dylib:openssl
+    configure.args-append   --with-implicittls \
                             --with-certfile=${prefix}/etc/${name}/ssl/pure-ftpd.pem
 }
 
