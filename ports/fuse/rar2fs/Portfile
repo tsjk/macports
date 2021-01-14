@@ -7,7 +7,7 @@ github.setup        hasse69 rar2fs 1.29.3 v
 
 name                rar2fs
 conflicts           rar2fs-devel
-version             1.29.0
+version             1.29.3
 revision            0
 categories          fuse
 platforms           darwin
