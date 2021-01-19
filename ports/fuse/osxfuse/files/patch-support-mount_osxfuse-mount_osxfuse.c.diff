@@ -1,0 +1,33 @@
+--- support/mount_osxfuse/mount_osxfuse.c.orig	2018-07-01 12:18:49.000000000 +0200
++++ support/mount_osxfuse/mount_osxfuse.c	2020-12-26 04:39:32.000000000 +0100
+@@ -343,7 +343,7 @@
+ static char     *fsname         = NULL;
+ static uintptr_t fssubtype      = 0;
+ static char     *fstypename     = NULL;
+-static uintptr_t iosize         = FUSE_DEFAULT_IOSIZE;
++static uintptr_t iosize         = 0;  // initialized in main()
+ static uint32_t  drandom        = 0;
+ static char     *volname        = NULL;
+ 
+@@ -389,7 +389,7 @@
+         NULL,
+         0,
+         fuse_to_uint32,
+-        (void *)FUSE_DEFAULT_IOSIZE,
++        NULL,  // initialized in main()
+         (void **)&iosize,
+         "invalid value for argument iosize"
+     },
+@@ -802,6 +802,12 @@
+         showhelp();
+     }
+ 
++    // PAGE_SIZE in FUSE_DEFAULT_IOSIZE is no longer a
++    // constant, so we initialize the two global locations
++    // where the latter was used at runtime
++    iosize = FUSE_DEFAULT_IOSIZE;
++    mvals[4].mv_fallback = (void *)iosize;
++
+     memset((void *)&args, 0, sizeof(args));
+ 
+     while (true) {

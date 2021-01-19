@@ -1,0 +1,17 @@
+--- build.d/defaults.sh~	2018-12-18 06:34:11.000000000 +0100
++++ build.d/defaults.sh	2020-09-22 21:38:37.000000000 +0200
+@@ -68,7 +68,13 @@
+ declare -ra DEFAULT_SDK_10_14_ARCHITECURES=("x86_64")
+ declare -r  DEFAULT_SDK_10_14_COMPILER="com.apple.compilers.llvm.clang.1_0"
+ 
+-declare -ra DEFAULT_SDK_SUPPORTED=("10.5" "10.6" "10.7" "10.8" "10.9" "10.10" "10.11" "10.12" "10.13" "10.14")
++declare -ra DEFAULT_SDK_10_15_ARCHITECURES=("x86_64")
++declare -r  DEFAULT_SDK_10_15_COMPILER="com.apple.compilers.llvm.clang.1_0"
++
++declare -ra DEFAULT_SDK_11_1_ARCHITECURES=("x86_64")
++declare -r  DEFAULT_SDK_11_1_COMPILER="com.apple.compilers.llvm.clang.1_0"
++
++declare -ra DEFAULT_SDK_SUPPORTED=("10.5" "10.6" "10.7" "10.8" "10.9" "10.10" "10.11" "10.12" "10.13" "10.14" "10.15" "11.1")
+ 
+ declare     DEFAULT_SDK="`macos_get_version`"
+ declare -r  DEFAULT_BUILD_CONFIGURATION="Release"

@@ -1,0 +1,15 @@
+--- build.d/lib/xcode.sh~	2020-09-22 22:21:36.000000000 +0200
++++ build.d/lib/xcode.sh	2020-09-22 22:20:18.000000000 +0200
+@@ -90,7 +90,11 @@
+ 
+         for sdk_name in `DEVELOPER_DIR="${xcode_path}" xcodebuild -showsdks 2>&4 | /usr/bin/sed -E -n -e 's/.*-sdk (macosx.*)/\1/p'`
+         do
+-            sdk_version="`DEVELOPER_DIR="${xcode_path}" xcodebuild -version -sdk ${sdk_name} SDKVersion 2>&4`"
++            if [ "$xcode_version" == "12.0" ] ; then
++                sdk_version="`DEVELOPER_DIR="${xcode_path}" xcodebuild -version -sdk ${sdk_name} SDKVersion 2>&4 | cut -d'.' -f1-2`"
++            else
++                sdk_version="`DEVELOPER_DIR="${xcode_path}" xcodebuild -version -sdk ${sdk_name} SDKVersion 2>&4`"
++            fi
+             if ! version_is_version "${sdk_version}"
+             then
+                 continue
